@@ -9,4 +9,9 @@ class TextL10nPt{
   String get confirmPassword => 'Confirme sua senha';
   String get haveAccount => 'Já tem conta?';
   String get login => 'Faça login';
+  String get home => 'H O M E';
+  String get settings => 'C O N F I G U R A Ç Õ E S';
+  String get logout => 'S A I R';
+  String get settingsTitle => 'Configurações';
+  String get darkMode => 'Modo escuro';
 }
