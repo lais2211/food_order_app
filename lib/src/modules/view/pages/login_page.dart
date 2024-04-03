@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:get_it/get_it.dart';
 import 'package:restaurante_app/src/modules/view/components/login_button.dart';
 import 'package:restaurante_app/src/modules/view/components/login_text_field.dart';
 
 import '../../l10n/text_l10n_pt.dart';
+import '../controllers/login_page_controller.dart';
 
 class LoginPage extends StatefulWidget {
 
@@ -16,10 +17,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController emailController = TextEditingController();
-
-  final TextEditingController passwordController = TextEditingController();
-
+  
+  LoginPageController controller = GetIt.I();
   final TextL10nPt text = TextL10nPt();
 
   @override
@@ -49,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
               height: 25,
             ),
             LoginTextField(
-              controller: emailController,
+              controller: controller.emailController,
               hintText: text.email,
               obscureText: false,
             ),
@@ -57,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
               height: 10,
             ),
             LoginTextField(
-              controller: passwordController,
+              controller: controller.passwordController,
               hintText: text.password,
               obscureText: true,
             ),

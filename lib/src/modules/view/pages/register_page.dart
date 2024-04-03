@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:restaurante_app/src/modules/view/controllers/register_page_controller.dart';
 
 import '../../l10n/text_l10n_pt.dart';
 import '../components/login_button.dart';
@@ -13,12 +15,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  final TextEditingController emailController = TextEditingController();
-
-  final TextEditingController passwordController = TextEditingController();
-
-  final TextEditingController confirmPasswordController =
-      TextEditingController();
+  RegisterPageController controller = GetIt.I();
 
   final TextL10nPt text = TextL10nPt();
 
@@ -49,7 +46,7 @@ class _RegisterPageState extends State<RegisterPage> {
               height: 25,
             ),
             LoginTextField(
-              controller: emailController,
+              controller: controller.emailController,
               hintText: text.email,
               obscureText: false,
             ),
@@ -57,7 +54,7 @@ class _RegisterPageState extends State<RegisterPage> {
               height: 10,
             ),
             LoginTextField(
-              controller: passwordController,
+              controller: controller.passwordController,
               hintText: text.password,
               obscureText: true,
             ),
@@ -65,7 +62,7 @@ class _RegisterPageState extends State<RegisterPage> {
               height: 10,
             ),
             LoginTextField(
-              controller: confirmPasswordController,
+              controller: controller.confirmPasswordController,
               hintText: text.confirmPassword,
               obscureText: true,
             ),
