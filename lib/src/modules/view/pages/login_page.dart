@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:restaurante_app/src/modules/view/components/login_button.dart';
 import 'package:restaurante_app/src/modules/view/components/login_text_field.dart';
+import 'package:restaurante_app/src/modules/view/pages/home_page.dart';
 
 import '../../l10n/text_l10n_pt.dart';
 import '../controllers/login_page_controller.dart';
 
 class LoginPage extends StatefulWidget {
-
   final Function()? onTap;
 
   const LoginPage({super.key, this.onTap});
@@ -17,7 +17,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  
   LoginPageController controller = GetIt.I();
   final TextL10nPt text = TextL10nPt();
 
@@ -65,7 +64,14 @@ class _LoginPageState extends State<LoginPage> {
             ),
             LoginButton(
               text: text.loginButton,
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HomePage(),
+                  ),
+                );
+              },
             ),
             const SizedBox(
               height: 25,
@@ -82,7 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                   width: 4,
                 ),
                 GestureDetector(
-                  onTap:widget.onTap,
+                  onTap: widget.onTap,
                   child: Text(
                     text.registerMember,
                     style: TextStyle(
