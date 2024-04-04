@@ -14,4 +14,15 @@ class TextL10nPt{
   String get logout => 'S A I R';
   String get settingsTitle => 'Configurações';
   String get darkMode => 'Modo escuro';
+  String get homeTitle => 'Home';
+  String get delivery => 'Entrega';
+  String get location => 'Endereço X';
+  String get currentLocationTitle => 'Sua localização';
+  String get searchLocation => 'Pesquisar localização';
+  String get cancelButton => 'Cancelar';
+  String get saveButton => 'Salvar';
+  String get deliveryPrice => 'R\$10,00';
+  String get deliveryPriceText => 'Frete';
+  String get deliveryTimerText => 'Tempo de entrega';
+  String get deliveryTimer => '20-30 min';
 }
