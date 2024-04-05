@@ -28,9 +28,12 @@ class _CurrentLocationState extends State<CurrentLocation> {
           Text(
             text.delivery,
             style: TextStyle(
-              color: Theme.of(context).colorScheme.primary,
+              color: Theme.of(context).colorScheme.inversePrimary,
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
             ),
           ),
+          const SizedBox(height: 5,),
           GestureDetector(
             onTap: () => controller.openLocationSearchBox(
               context,
@@ -44,7 +47,7 @@ class _CurrentLocationState extends State<CurrentLocation> {
                 Text(
                   text.location,
                   style: TextStyle(
-                    color: Theme.of(context).colorScheme.inversePrimary,
+                    color: Theme.of(context).colorScheme.primary,
                     fontWeight: FontWeight.bold,
                   ),
                 ),

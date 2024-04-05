@@ -34,13 +34,14 @@ class HomeDescriptionBox extends StatelessWidget {
               ),
             ],
           ),
+          const SizedBox(width: 85,),
           Column(
             children: [
               Text(text.deliveryTimer),
               Text(
                 text.deliveryTimerText,
                 style: TextStyle(
-                  color: Theme.of(context).colorScheme.secondary,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
               ),
             ],
