@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:restaurante_app/src/modules/view/components/login_button.dart';
+import 'package:restaurante_app/src/modules/view/components/main_button.dart';
 import 'package:restaurante_app/src/modules/view/components/login_text_field.dart';
 import 'package:restaurante_app/src/modules/view/pages/home_page.dart';
 
@@ -62,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(
               height: 10,
             ),
-            LoginButton(
+            MainButton(
               text: text.loginButton,
               onTap: () {
                 Navigator.push(

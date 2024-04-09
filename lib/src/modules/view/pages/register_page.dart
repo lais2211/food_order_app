@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:restaurante_app/src/modules/view/controllers/register_page_controller.dart';
 
 import '../../l10n/text_l10n_pt.dart';
-import '../components/login_button.dart';
+import '../components/main_button.dart';
 import '../components/login_text_field.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -69,7 +69,7 @@ class _RegisterPageState extends State<RegisterPage> {
             const SizedBox(
               height: 25,
             ),
-            LoginButton(
+            MainButton(
               text: text.registerMember,
               onTap: () {},
             ),
