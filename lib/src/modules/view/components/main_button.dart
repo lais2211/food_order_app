@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class LoginButton extends StatelessWidget {
+class MainButton extends StatelessWidget {
   final Function()? onTap;
   final String text;
-  const LoginButton({super.key, this.onTap, required this.text});
+  const MainButton({super.key, this.onTap, required this.text});
 
   @override
   Widget build(BuildContext context) {
