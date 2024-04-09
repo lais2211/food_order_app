@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:restaurante_app/src/modules/data/models/food_enum.dart';
 import 'package:restaurante_app/src/modules/view/components/food_tile.dart';
+import 'package:restaurante_app/src/modules/view/pages/food_page.dart';
 
 import '../../data/models/food_model.dart';
 
@@ -28,7 +29,10 @@ abstract class _HomePageControllerBase with Store {
             final food = categoryMenu[index];
             return FoodTile(
               food: food,
-              onTap: () {},
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => FoodPage(food: food))),
             );
           });
     }).toList();
