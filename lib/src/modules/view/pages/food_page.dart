@@ -3,11 +3,13 @@ import 'package:get_it/get_it.dart';
 import 'package:restaurante_app/src/modules/data/models/addon_model.dart';
 import 'package:restaurante_app/src/modules/data/models/food_model.dart';
 import 'package:restaurante_app/src/modules/view/components/main_button.dart';
+import 'package:restaurante_app/src/modules/view/controllers/cart_controller.dart';
 import 'package:restaurante_app/src/modules/view/controllers/food_page_controller.dart';
 
 class FoodPage extends StatefulWidget {
   Food food;
   FoodPageController controller = GetIt.I();
+  CartController cartController = GetIt.I();
 
   FoodPage({super.key, required this.food}) {
     for (Addon addon in food.availableAddons) {
@@ -116,7 +118,8 @@ class _FoodPageState extends State<FoodPage> {
                 ),
                 MainButton(
                   text: 'Adicione ao carrinho',
-                  onTap: () {},
+                  onTap: () => widget.controller.addToCart(
+                      widget.food, widget.controller.selectAddons, context),
                 ),
                 const SizedBox(
                   height: 25.0,
