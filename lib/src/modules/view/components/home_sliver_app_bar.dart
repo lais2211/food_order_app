@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:restaurante_app/src/modules/view/pages/cart_page.dart';
 
 class HomeSliverAppBar extends StatelessWidget {
   final Widget child;
@@ -15,7 +16,14 @@ class HomeSliverAppBar extends StatelessWidget {
       pinned: true,
       actions: [
         IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>  CartPage(),
+                ),
+              );
+            },
             icon: const Icon(
               Icons.shopping_cart,
             ))
