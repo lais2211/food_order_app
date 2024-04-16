@@ -17,6 +17,9 @@ abstract class _CartControllerBase with Store {
   List<CartModel> cartList = [];
 
   @computed
+  List<CartModel> get userCart => cartList;
+
+  @computed
   double get totalPriceCart {
     double addonsPrice =
         cart.selectedAddons.fold(0, (sum, addon) => sum + addon.price);
