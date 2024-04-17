@@ -9,7 +9,7 @@ part 'cart_controller.g.dart';
 
 class CartController = _CartControllerBase with _$CartController;
 
-abstract class _CartControllerBase with Store {
+abstract class _CartControllerBase extends ChangeNotifier with Store {
   @observable
   late CartModel cart;
 
@@ -27,7 +27,7 @@ abstract class _CartControllerBase with Store {
   }
 
   @action
-  void addToCart(Food food, List<Addon> selectedAddons) {
+  void addFoodToCartController(Food food, List<Addon> selectedAddons) {
     CartModel? cartItem;
     try {
       cartItem = cartList.firstWhere((item) {
