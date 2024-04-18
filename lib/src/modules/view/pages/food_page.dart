@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:restaurante_app/src/modules/data/models/addon_model.dart';
@@ -44,7 +46,7 @@ class _FoodPageState extends State<FoodPage> {
                         ),
                       ),
                       Text(
-                        'R\$' + widget.food.price.toString(),
+                        'R\$${widget.food.price}',
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.primary,
                           fontSize: 16,
@@ -97,7 +99,7 @@ class _FoodPageState extends State<FoodPage> {
                             return CheckboxListTile(
                               title: Text(addon.name),
                               subtitle: Text(
-                                'R\$' + addon.price.toString(),
+                                'R\$${addon.price}',
                                 style: TextStyle(
                                   color: Theme.of(context).colorScheme.primary,
                                 ),
