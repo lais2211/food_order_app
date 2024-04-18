@@ -9,7 +9,6 @@ import 'my_app.dart';
 import 'src/config/system.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
   System.init();
 
   runApp(
