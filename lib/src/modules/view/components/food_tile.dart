@@ -17,6 +17,9 @@ class FoodTile extends StatelessWidget {
               Expanded(
                 child: Column(
                   children: [
+                    const SizedBox(
+                      height: 20,
+                    ),
                     Text(
                       food.name,
                     ),
@@ -46,7 +49,7 @@ class FoodTile extends StatelessWidget {
               ),
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
-                child:  Container(
+                child: Container(
                   width: 120,
                   height: 120,
                   child: Image.asset(
