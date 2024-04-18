@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
 import 'package:restaurante_app/src/modules/data/models/addon_model.dart';
 import 'package:restaurante_app/src/modules/data/models/cart_model.dart';
-
 import '../../data/models/food_model.dart';
 
 part 'cart_controller.g.dart';
@@ -10,25 +9,27 @@ part 'cart_controller.g.dart';
 class CartController = _CartControllerBase with _$CartController;
 
 abstract class _CartControllerBase extends ChangeNotifier with Store {
+
+  @observable
+  ObservableList<CartModel> cartList = ObservableList<CartModel>();
+
   @observable
   late CartModel cart;
 
-  @observable
-  List<CartModel> cartList = [];
-
   @computed
   List<CartModel> get userCart => cartList;
-
+  
   @computed
   double get totalPriceCart {
     double addonsPrice =
-        cart.selectedAddons.fold(0, (sum, addon) => sum + addon.price);
+        cart.selectedAddons!.fold(0, (sum, addon) => sum + addon.price);
     return (cart.food.price + addonsPrice) * cart.quantity;
   }
 
   @action
-  void addFoodToCartController(Food food, List<Addon> selectedAddons) {
+  void addFoodToCartController(Food food, List<Addon>? selectedAddons) {
     CartModel? cartItem;
+
     try {
       cartItem = cartList.firstWhere((item) {
         bool isSameFood = item.food == food;
@@ -36,8 +37,9 @@ abstract class _CartControllerBase extends ChangeNotifier with Store {
         return isSameFood && isSameAddon;
       });
     } catch (e) {
-      cartItem = null;
+      cartItem == null;
     }
+
     if (cartItem != null) {
       cartItem.quantity++;
     } else {
@@ -51,7 +53,7 @@ abstract class _CartControllerBase extends ChangeNotifier with Store {
   }
 
   @action
-  void removeRomCart(CartModel cartModel) {
+  void removeFromCart(CartModel cartModel) {
     int cartIndex = cartList.indexOf(cartModel);
     if (cartIndex != -1) {
       if (cartList[cartIndex].quantity > 1) {
@@ -64,19 +66,22 @@ abstract class _CartControllerBase extends ChangeNotifier with Store {
 
   @action
   double getTotalPriceRestaurant() {
-    double total = 0.0;
+  double total = 0.0;
 
-    for (CartModel cartModel in cartList) {
-      double itemTotal = cartModel.food.price;
+  for (CartModel cartModel in cartList) {
+    double itemTotal = cartModel.food.price;
 
-      for (Addon addon in cartModel.selectedAddons) {
+    if (cartModel.selectedAddons != null) {
+      for (Addon addon in cartModel.selectedAddons!) {
         itemTotal += addon.price;
       }
-      total += itemTotal + cartModel.quantity;
     }
-    return total;
+
+    total += itemTotal + cartModel.quantity;
   }
 
+  return total;
+}
   @action
   int getTotalItemCount() {
     int totalItemCount = 0;
