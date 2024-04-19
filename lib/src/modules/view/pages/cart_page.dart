@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:provider/provider.dart';
 import 'package:restaurante_app/src/modules/view/components/cart_tile.dart';
@@ -7,18 +6,21 @@ import 'package:restaurante_app/src/modules/view/components/main_button.dart';
 import 'package:restaurante_app/src/modules/view/controllers/cart_controller.dart';
 import 'package:restaurante_app/src/modules/view/pages/payment_page.dart';
 
+import '../../l10n/text_l10n_pt.dart';
+
 class CartPage extends StatelessWidget {
-  const CartPage({super.key});
+  CartPage({super.key});
+  final TextL10nPt text = TextL10nPt();
 
   @override
   Widget build(BuildContext context) {
     return Consumer<CartController>(
       builder: (context, controller, child) {
-        final userCart = controller.userCart;
+        final userCart = controller.cartList;
 
         return Scaffold(
           appBar: AppBar(
-            title: Text('Carrinho'),
+            title: Text(text.cart),
             backgroundColor: Colors.transparent,
             foregroundColor: Theme.of(context).colorScheme.inversePrimary,
             actions: [
@@ -27,20 +29,22 @@ class CartPage extends StatelessWidget {
                   showDialog(
                       context: context,
                       builder: (context) => AlertDialog(
-                            title: const Text(
-                              'Você quer limpar o carrinho?',
+                            title:  Text(
+                             text.clearCart,
                             ),
                             actions: [
                               TextButton(
                                 onPressed: () => Navigator.pop(context),
-                                child: const Text('Cancelar'),
+                                child:  Text(text.cancelButton),
                               ),
                               TextButton(
                                 onPressed: () {
                                   Navigator.pop(context);
-                                  controller.clearCart();
+                                  setState() {
+                                    controller.clearCart();
+                                  }
                                 },
-                                child: const Text('Sim'),
+                                child: Text(text.yesButton),
                               ),
                             ],
                           ));
@@ -55,10 +59,10 @@ class CartPage extends StatelessWidget {
                 child: Column(
                   children: [
                     userCart.isEmpty
-                        ? const Expanded(
+                        ? Expanded(
                             child: Center(
                               child: Text(
-                                'Carrinho vazio',
+                                text.emptyCart,
                               ),
                             ),
                           )
@@ -76,7 +80,7 @@ class CartPage extends StatelessWidget {
                 ),
               ),
               MainButton(
-                text: 'Vá para o pagamento',
+                text: text.paymentPage,
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(

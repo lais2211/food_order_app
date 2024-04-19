@@ -24,7 +24,7 @@ class FoodTile extends StatelessWidget {
                       food.name,
                     ),
                     Text(
-                      'R\$' + food.price.toString(),
+                      'R\$${food.price}',
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.primary,
                       ),
@@ -49,7 +49,7 @@ class FoodTile extends StatelessWidget {
               ),
               ClipRRect(
                 borderRadius: BorderRadius.circular(8),
-                child: Container(
+                child: SizedBox(
                   width: 120,
                   height: 120,
                   child: Image.asset(

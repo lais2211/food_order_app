@@ -6,6 +6,8 @@ import 'package:get_it/get_it.dart';
 import 'package:restaurante_app/src/modules/view/components/main_button.dart';
 import 'package:restaurante_app/src/modules/view/controllers/payment_page_controller.dart';
 
+import '../../l10n/text_l10n_pt.dart';
+
 class PaymentPage extends StatefulWidget {
   PaymentPageController controller = GetIt.I();
   final CreditCardModel creditCard;
@@ -17,13 +19,14 @@ class PaymentPage extends StatefulWidget {
 }
 
 class _PaymentPageState extends State<PaymentPage> {
+  final TextL10nPt text = TextL10nPt();
    @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: const Text('Pagamento'),
+        title: Text(text.payment),
       ),
       body: Column(
         children: [
@@ -51,7 +54,7 @@ class _PaymentPageState extends State<PaymentPage> {
               formKey: widget.controller.formKey),
           const Spacer(),
           MainButton(
-            text: 'Pague agora',
+            text: text.paymentNow,
             onTap: () => widget.controller.userTappedPay(context),
           ),
           const SizedBox(

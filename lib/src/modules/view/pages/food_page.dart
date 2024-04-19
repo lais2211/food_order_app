@@ -8,6 +8,8 @@ import 'package:restaurante_app/src/modules/view/components/main_button.dart';
 import 'package:restaurante_app/src/modules/view/controllers/cart_controller.dart';
 import 'package:restaurante_app/src/modules/view/controllers/food_page_controller.dart';
 
+import '../../l10n/text_l10n_pt.dart';
+
 class FoodPage extends StatefulWidget {
   Food food;
   FoodPageController controller = GetIt.I();
@@ -24,6 +26,7 @@ class FoodPage extends StatefulWidget {
 }
 
 class _FoodPageState extends State<FoodPage> {
+  final TextL10nPt text = TextL10nPt();
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -72,7 +75,7 @@ class _FoodPageState extends State<FoodPage> {
                         height: 10,
                       ),
                       Text(
-                        'Adicionais',
+                        text.addons,
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.inversePrimary,
                           fontSize: 16,
@@ -119,7 +122,7 @@ class _FoodPageState extends State<FoodPage> {
                   ),
                 ),
                 MainButton(
-                  text: 'Adicione ao carrinho',
+                  text: text.addToCart,
                   onTap: () => widget.controller.addToCart(
                       widget.food, widget.controller.selectAddons, context),
                 ),
