@@ -9,6 +9,7 @@ class TextL10nPt{
   String get addons => 'Adicionais';
   String get cart => 'Carrinho';  
   String get delivery => 'Entrega';
+  String get deliveryInProgress => 'Entrega em andamento..';
 
   //Botões
   String get loginButton => 'Entrar';
@@ -48,4 +49,8 @@ class TextL10nPt{
   //Carrinho
   String get clearCart => 'Você quer limpar o carrinho?';
   String get emptyCart => 'Carrinho vazio';
+
+  //Recibo
+  String get thankYou => 'Obrigada pelo pedido!';
+  String get receipt => 'Recibo aqui..';
 }
