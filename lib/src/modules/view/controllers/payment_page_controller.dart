@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:mobx/mobx.dart';
+import 'package:restaurante_app/src/modules/view/pages/delivery_progress_page.dart';
 
 part 'payment_page_controller.g.dart';
 
@@ -33,7 +34,13 @@ abstract class _PaymentPageControllerBase extends ChangeNotifier with Store {
                 ),
                 actions: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DeliveryProgressPage()));
+                    },
                     child: const Text('Sim'),
                   ),
                   TextButton(
