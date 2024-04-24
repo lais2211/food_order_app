@@ -53,4 +53,5 @@ class TextL10nPt{
   //Recibo
   String get thankYou => 'Obrigada pelo pedido!';
   String get receipt => 'Recibo aqui..';
+  String get deliveryEstimated => 'Entrega estimada para as 16:20';
 }
