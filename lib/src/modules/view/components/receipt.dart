@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:restaurante_app/src/modules/view/controllers/cart_controller.dart';
 
 import '../../l10n/text_l10n_pt.dart';
 
@@ -31,7 +33,15 @@ class Receipt extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
               ),
               padding: const EdgeInsets.all(25),
-              child: Text(text.receipt),
+              child: Consumer<CartController>(
+                builder: (context, controller, child) =>
+                    Text(controller.displayCartReceipt()),
+              ),
+            ),
+            const SizedBox(
+              height: 25,
+            ),
+            Consumer<CartController>(builder: (context, controller, child) => Text(controller.deliveyTime())
             ),
           ],
         ),

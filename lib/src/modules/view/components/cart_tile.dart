@@ -76,7 +76,9 @@ class _CartTileState extends State<CartTile> {
                     },
                     onDecrement: () {
                       (() {
-                        cartController.removeFromCart(widget.cart);
+                        setState(() {
+                          cartController.removeFromCart(widget.cart);
+                        });
                       });
                     },
                   ),
