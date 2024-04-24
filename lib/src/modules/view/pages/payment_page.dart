@@ -9,10 +9,11 @@ import 'package:restaurante_app/src/modules/view/controllers/payment_page_contro
 import '../../l10n/text_l10n_pt.dart';
 
 class PaymentPage extends StatefulWidget {
-  PaymentPageController controller = GetIt.I();
-  final CreditCardModel creditCard;
+ final CreditCardModel creditCard;
 
-  PaymentPage({super.key, required this.creditCard});
+ PaymentPageController controller = GetIt.I();
+
+  PaymentPage({Key? key, required this.creditCard});
 
   @override
   State<PaymentPage> createState() => _PaymentPageState();
@@ -55,7 +56,10 @@ class _PaymentPageState extends State<PaymentPage> {
           const Spacer(),
           MainButton(
             text: text.paymentNow,
-            onTap: () => widget.controller.userTappedPay(context),
+            onTap: () {
+              widget.controller.credit = widget.creditCard;
+              widget.controller.userTappedPay(context);
+            } 
           ),
           const SizedBox(
             height: 25,
