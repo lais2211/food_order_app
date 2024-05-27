@@ -75,11 +75,9 @@ class _CartTileState extends State<CartTile> {
                       });
                     },
                     onDecrement: () {
-                      (() {
                         setState(() {
                           cartController.removeFromCart(widget.cart);
                         });
-                      });
                     },
                   ),
                   const SizedBox(

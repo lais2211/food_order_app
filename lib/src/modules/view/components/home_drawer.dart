@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:restaurante_app/src/modules/view/components/home_drawer_tile.dart';
 import 'package:restaurante_app/src/modules/view/pages/home_page.dart';
 import 'package:restaurante_app/src/modules/view/pages/login_page.dart';
 
 import '../../l10n/text_l10n_pt.dart';
+import '../controllers/home_page_controller.dart';
 import '../pages/settings_page.dart';
 
 class HomeDrawer extends StatelessWidget {
@@ -12,6 +14,8 @@ class HomeDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final TextL10nPt text = TextL10nPt();
+
+    HomePageController controller = GetIt.I();
     return Drawer(
       backgroundColor: Theme.of(context).colorScheme.background,
       child: Column(
@@ -65,13 +69,7 @@ class HomeDrawer extends StatelessWidget {
             text: text.logout,
             icon: Icons.logout,
             onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const LoginPage(),
-                ),
-              );
+              controller.logout(context);
             },
           ),
           const SizedBox(
