@@ -8,8 +8,14 @@ import 'package:restaurante_app/src/modules/view/pages/payment_page.dart';
 
 import '../../l10n/text_l10n_pt.dart';
 
-class CartPage extends StatelessWidget {
-  CartPage({super.key});
+class CartPage extends StatefulWidget {
+ const CartPage({super.key});
+
+  @override
+  State<CartPage> createState() => _CartPageState();
+}
+
+class _CartPageState extends State<CartPage> {
   final TextL10nPt text = TextL10nPt();
 
   @override
@@ -40,9 +46,10 @@ class CartPage extends StatelessWidget {
                               TextButton(
                                 onPressed: () {
                                   Navigator.pop(context);
-                                  setState() {
-                                    controller.clearCart();
-                                  }
+                                   controller.clearCart();
+                                   setState(() {
+                                     
+                                   });
                                 },
                                 child: Text(text.yesButton),
                               ),
@@ -74,7 +81,7 @@ class CartPage extends StatelessWidget {
                                   index,
                                 ) {
                                   final cartItem = userCart[index];
-                                  return CartTile(cart: cartItem);
+                                  return CartTile(cart: cartItem,);
                                 }))
                   ],
                 ),

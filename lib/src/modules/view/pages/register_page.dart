@@ -71,7 +71,9 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             MainButton(
               text: text.registerMember,
-              onTap: () {},
+              onTap: () {
+                controller.register(context);
+              },
             ),
             const SizedBox(
               height: 25,

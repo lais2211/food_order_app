@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:restaurante_app/src/modules/view/components/main_button.dart';
 import 'package:restaurante_app/src/modules/view/components/login_text_field.dart';
-import 'package:restaurante_app/src/modules/view/pages/home_page.dart';
 
 import '../../l10n/text_l10n_pt.dart';
 import '../controllers/login_page_controller.dart';
@@ -65,12 +64,7 @@ class _LoginPageState extends State<LoginPage> {
             MainButton(
               text: text.loginButton,
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const HomePage(),
-                  ),
-                );
+                controller.login(context);
               },
             ),
             const SizedBox(
