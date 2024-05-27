@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 import 'package:restaurante_app/src/modules/data/models/food_enum.dart';
+import 'package:restaurante_app/src/modules/data/services/auth/auth_service.dart';
 import 'package:restaurante_app/src/modules/view/components/food_tile.dart';
 import 'package:restaurante_app/src/modules/view/pages/food_page.dart';
 
@@ -74,4 +75,9 @@ abstract class _HomePageControllerBase with Store {
       ),
     );
   }
+  @action
+  Future<void> logout (context) async {
+    final _authService = AuthService();
+    _authService.signOut();
+  } 
 }

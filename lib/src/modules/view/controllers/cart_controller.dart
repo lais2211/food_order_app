@@ -127,6 +127,11 @@ abstract class _CartControllerBase extends ChangeNotifier with Store {
       receipt.writeln('Total de items: ${getTotalItemCount()}');
       receipt.writeln('Preço total: ${formatPrice(getTotalPriceRestaurant())}');
     }
+      receipt.writeln('----------------');
+      receipt.writeln();
+      receipt.writeln('Total de items: ${getTotalItemCount()}');
+      receipt.writeln('Preço total: ${formatPrice(getTotalPriceRestaurant())}');
+    
     return receipt.toString();
   }
 

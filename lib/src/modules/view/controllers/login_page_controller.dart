@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
-
-import '../pages/home_page.dart';
+import 'package:restaurante_app/src/modules/data/services/auth/auth_service.dart';
 
 part 'login_page_controller.g.dart';
 
-class LoginPageController = _LoginPageControllerBase
-    with _$LoginPageController;
+class LoginPageController = _LoginPageControllerBase with _$LoginPageController;
 
 abstract class _LoginPageControllerBase with Store {
   @observable
@@ -20,8 +18,19 @@ abstract class _LoginPageControllerBase with Store {
     emailController.clear();
     passwordController.clear();
   }
+
   @action
-  void login(context){
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage(),),);
+  Future<void> login(context) async {
+    final _authService = AuthService();
+    try {
+      await _authService.signInWithEmailAndPassword(
+          emailController.text, passwordController.text);
+    } catch (e) {
+      showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+                title: Text(e.toString()),
+              ));
+    }
   }
 }
